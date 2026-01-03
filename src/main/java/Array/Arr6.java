@@ -42,6 +42,7 @@ public class Arr6 {
             }
             if(sum==target){
                 max=Integer.max(j-i+1, max);
+                sum+=target;
             }
             if(sum>target && i<j){
                 sum-=arr[i];
