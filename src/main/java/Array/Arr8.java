@@ -20,9 +20,7 @@ public class Arr8 {
                  arr[mid]=arr[start];
                  arr[start]=temp;
                  start++;
-                 continue;
-             }
-             if(arr[mid]==2){
+             }else if(arr[mid]==2){
                  int temp=arr[mid];
                  arr[mid]=arr[end];
                  arr[end]=temp;
