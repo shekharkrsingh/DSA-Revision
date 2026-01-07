@@ -6,7 +6,7 @@ import java.util.Stack;
 
 public class Arr14 {
     public static void main(String[] args) {
-        int[] arr= {5,3,2,4,1};
+        int[] arr= {1,3,2,3,1};
         System.out.println(countInversion(arr));
         System.out.println(Arrays.toString(arr));
     }
@@ -28,7 +28,10 @@ public class Arr14 {
         while(i<=mid && j<=high){
             if(arr[i]>arr[j]){
                 temp[idx]=arr[j];
-                count += (mid - i + 1);
+                if(arr[i]>2*arr[j]) {
+                    System.out.println(arr[i]+" "+arr[j]);
+                    count += (mid - i + 1);
+                }
                 j++;
             }else{
                 temp[idx]=arr[i];
