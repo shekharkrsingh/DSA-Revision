@@ -2,6 +2,8 @@ package Graph;
 
 import java.util.*;
 
+import static Graph.DFS.dfs;
+
 public class BFS {
     public static void main(String[] args) {
         int n=10;
@@ -17,6 +19,15 @@ public class BFS {
         adj.add(Arrays.asList(5,7));
         adj.add(List.of());
         System.out.println(bfs(adj, 10));
+        List<Boolean> visited= new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
+        for(int i=0;i<n;i++){
+            visited.add(false);
+        }
+        for(int i=1;i<n;i++){
+            dfs(adj, i, result, visited);
+        }
+        System.out.println(result);
     }
 
     private static List<Integer> bfs(List<List<Integer>> adj, int n){
