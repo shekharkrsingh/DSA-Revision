@@ -2,6 +2,7 @@ package Graph;
 
 import java.util.*;
 
+import static Graph.CycleDetectionUsingBFS.cycleDetectionUsingBFS;
 import static Graph.DFS.dfs;
 
 public class BFS {
@@ -31,6 +32,7 @@ public class BFS {
             }
         }
         System.out.println(result);
+        System.out.println(cycleDetectionUsingBFS(adj, n));
     }
 
     private static List<Integer> bfs(List<List<Integer>> adj, int n){
