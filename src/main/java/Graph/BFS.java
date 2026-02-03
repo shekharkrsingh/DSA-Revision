@@ -25,7 +25,10 @@ public class BFS {
             visited.add(false);
         }
         for(int i=1;i<n;i++){
-            dfs(adj, i, result, visited);
+            if(!visited.get(i)) {
+                visited.set(i, true);
+                dfs(adj, i, result, visited);
+            }
         }
         System.out.println(result);
     }
