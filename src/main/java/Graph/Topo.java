@@ -1,9 +1,6 @@
 package Graph;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class Topo {
     public static void main(String[] args) {
@@ -29,6 +26,7 @@ public class Topo {
                 dfs(i, adj, visited, result);
             }
         }
+        System.out.println(bfsTopo(n, adj));
         return new ArrayList<>(result).reversed();
     }
 
@@ -41,6 +39,40 @@ public class Topo {
             }
         }
         result.add(n);
+    }
+
+    private static List<Integer> bfsTopo(int n, List<List<Integer>> adj){
+        List<Integer> indegree= new ArrayList<>();
+        List<Integer> result= new ArrayList<>();
+        Queue<Integer> st = new ArrayDeque<>();
+        for(int i=0;i<n;i++){
+            indegree.add(0);
+        }
+        for(List<Integer> list: adj){
+            for(int val: list){
+                indegree.set(val, indegree.get(val)+1);
+            }
+        }
+        for(int i=0;i<n; i++){
+            if(indegree.get(i)==0){
+                st.offer(i);
+            }
+        }
+
+        while(!st.isEmpty()){
+            int node= st.poll();
+            result.add(node);
+            List<Integer> list=adj.get(node);
+            for(int val: list){
+                int ind=indegree.get(val);
+                ind--;
+                indegree.set(val, ind);
+                if(ind==0){
+                    st.offer((val));
+                }
+            }
+        }
+        return result;
     }
 
 }
